@@ -4,7 +4,7 @@ import TicketHeader from "../../component/ticketHeader/TicketHeader";
 
 const TicketPage = () => {
   return (
-    <div>
+    <div data-testid={"tickets-page"}>
       <TicketHeader />
       Ticket Page
     </div>
