@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+
+import ErrorBoundary from "./errorBoundary/ErorBoundary";
+import LoadingPage from "./page/loadingPage/LoadingPage";
+import ErrorPage from "./page/errorPage/ErrorPage";
+import TicketPage from "./page/ticketPage/TicketPage";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loading ? <LoadingPage /> : error ? <ErrorPage /> : <TicketPage />}
     </div>
   );
 }
