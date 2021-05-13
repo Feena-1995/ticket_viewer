@@ -1,7 +1,7 @@
 import React from "react";
 
 const LoadingPage = () => {
-  return <div>Loading</div>;
+  return <div data-testid={"loading-page"}>...LOADING...</div>;
 };
 
 export default LoadingPage;
