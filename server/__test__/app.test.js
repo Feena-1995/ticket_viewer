@@ -80,7 +80,7 @@ describe("Get /tickets", () => {
   test("it should get all the tickets", async () => {
     axios.get.mockResolvedValue(mockData);
 
-    const response = await request(app).get("/tickets").send({
+    const response = await request(app).post("/tickets").send({
       username: "feenatian@gmail.com",
       password: "T1995#jn",
     });

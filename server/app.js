@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.get("/tickets", async (req, res) => {
+app.post("/tickets", async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -28,7 +28,6 @@ app.get("/tickets", async (req, res) => {
 
     res.status(200).send(response.data);
   } catch (err) {
-    console.log(err);
     res.status(err.response.status).send(err);
   }
 });
