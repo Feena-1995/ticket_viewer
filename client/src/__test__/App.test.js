@@ -26,7 +26,7 @@ describe("App page", () => {
     });
   });
 
-  test("Tickets page due to initial request success.", async () => {
+  test("Ticket page due to initial request success.", async () => {
     axios.post.mockImplementation(() =>
       Promise.resolve({
         data: {

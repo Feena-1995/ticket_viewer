@@ -5,11 +5,15 @@ import "./App.css";
 import LoadingPage from "./page/loadingPage/LoadingPage";
 import ErrorPage from "./page/errorPage/ErrorPage";
 import TicketPage from "./page/ticketPage/TicketPage";
+import TicketModal from "./component/ticketModal/TicketModal";
+import TicketDetails from "./component/ticketDetails/TicketDetails";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [tickets, setTickets] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [selectId, setSelectId] = useState(null);
 
   const handleFetchTickets = useCallback(async () => {
     try {
@@ -29,6 +33,11 @@ function App() {
     handleFetchTickets();
   }, [handleFetchTickets]);
 
+  const toggleModal = (id) => {
+    setVisible(true);
+    setSelectId(id);
+  };
+
   return (
     <div className="App">
       {loading ? (
@@ -36,8 +45,18 @@ function App() {
       ) : error ? (
         <ErrorPage />
       ) : (
-        <TicketPage tickets={tickets} />
+        <TicketPage tickets={tickets} toggleModal={toggleModal} />
       )}
+      {visible ? (
+        <TicketModal>
+          {selectId && (
+            <TicketDetails
+              selectTicket={tickets.find((t) => t.id === selectId)}
+              onClose={() => setVisible(false)}
+            />
+          )}
+        </TicketModal>
+      ) : null}
     </div>
   );
 }
