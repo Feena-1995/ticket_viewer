@@ -7,6 +7,10 @@ jest.mock("axios");
 
 describe("App page", () => {
   test("Loading page due to initial request.", async () => {
+    axios.post.mockImplementation(() =>
+      Promise.reject({ message: "Data not valid" })
+    );
+
     const { getByTestId } = render(<App />);
 
     await waitFor(() => {
