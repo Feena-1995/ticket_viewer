@@ -1,5 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
-import Tickets from "../../../component/tickets/Tickets";
+import Ticket from "../../../component/ticket/Ticket";
 
 const mockData = {
   id: "test",
@@ -14,7 +14,7 @@ const mockData = {
 
 describe("Ticket display items", () => {
   test("Ticket display items exist.", async () => {
-    const { getByTestId } = render(<Tickets ticketDisplay={mockData} />);
+    const { getByTestId } = render(<Ticket ticketDisplay={mockData} />);
 
     await waitFor(() => {
       expect(getByTestId("ticket-priorty"));

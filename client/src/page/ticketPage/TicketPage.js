@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import TicketHeader from "../../component/ticketHeader/TicketHeader";
-import Tickets from "../../component/tickets/Tickets";
+import Ticket from "../../component/ticket/Ticket";
 import Pagination from "../../component/pagination/Pagination";
 
 const Container = styled.div`
@@ -14,12 +14,14 @@ const Container = styled.div`
   height: 90%;
 `;
 
-const TicketPage = ({ tickets }) => {
+const TicketPage = ({ tickets, toggleModal }) => {
   return (
     <Container data-testid={"tickets-page"}>
       <TicketHeader />
       {tickets.map((a) => {
-        return <Tickets ticketDisplay={a} key={a.id} />;
+        return (
+          <Ticket ticketDisplay={a} key={a.id} toggleModal={toggleModal} />
+        );
       })}
       <Pagination />
     </Container>
