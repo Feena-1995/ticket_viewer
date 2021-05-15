@@ -7,6 +7,7 @@ import ErrorPage from "./page/errorPage/ErrorPage";
 import TicketPage from "./page/ticketPage/TicketPage";
 import TicketModal from "./component/ticketModal/TicketModal";
 import TicketDetails from "./component/ticketDetails/TicketDetails";
+import ErrorBoundary from "./errorBoundary/ErorBoundary";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -39,25 +40,27 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {loading ? (
-        <LoadingPage />
-      ) : error ? (
-        <ErrorPage />
-      ) : (
-        <TicketPage tickets={tickets} toggleModal={toggleModal} />
-      )}
-      {visible ? (
-        <TicketModal>
-          {selectId && (
-            <TicketDetails
-              selectTicket={tickets.find((t) => t.id === selectId)}
-              onClose={() => setVisible(false)}
-            />
-          )}
-        </TicketModal>
-      ) : null}
-    </div>
+    <ErrorBoundary>
+      <div className="App">
+        {loading ? (
+          <LoadingPage />
+        ) : error ? (
+          <ErrorPage />
+        ) : (
+          <TicketPage tickets={tickets} toggleModal={toggleModal} />
+        )}
+        {visible ? (
+          <TicketModal>
+            {selectId && (
+              <TicketDetails
+                selectTicket={tickets.find((t) => t.id === selectId)}
+                onClose={() => setVisible(false)}
+              />
+            )}
+          </TicketModal>
+        ) : null}
+      </div>
+    </ErrorBoundary>
   );
 }
 
