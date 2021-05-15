@@ -31,7 +31,13 @@ function App() {
 
   return (
     <div className="App">
-      {loading ? <LoadingPage /> : error ? <ErrorPage /> : <TicketPage />}
+      {loading ? (
+        <LoadingPage />
+      ) : error ? (
+        <ErrorPage />
+      ) : (
+        <TicketPage tickets={tickets} />
+      )}
     </div>
   );
 }
