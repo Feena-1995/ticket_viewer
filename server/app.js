@@ -17,7 +17,7 @@ app.post("/tickets", async (req, res) => {
 
   try {
     const response = await axios.get(
-      "https://feenatian.zendesk.com/api/v2/tickets.json?page[size]=25",
+      "https://feenatian.zendesk.com/api/v2/tickets.json?page[size]=100",
       {
         auth: {
           username: username,
