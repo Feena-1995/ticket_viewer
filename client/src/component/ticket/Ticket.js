@@ -37,7 +37,7 @@ const TicketCell = styled.div`
   max-width: 130px;
 `;
 
-const Tickets = (props) => {
+const Ticket = (props) => {
   const {
     ticketDisplay: {
       id,
@@ -49,12 +49,16 @@ const Tickets = (props) => {
       assignee_id,
       group_id,
     },
+    toggleModal,
   } = props;
 
   const date = new Date(Date.parse(updated_at));
 
   return (
-    <TicketContainer data-testid={`ticket-row-${id}`}>
+    <TicketContainer
+      data-testid={`ticket-row-${id}`}
+      onClick={() => toggleModal(id)}
+    >
       <TicketCellSmall data-testid={"ticket-priorty"}>
         {priority ?? "-"}
       </TicketCellSmall>
@@ -73,4 +77,4 @@ const Tickets = (props) => {
   );
 };
 
-export default Tickets;
+export default Ticket;

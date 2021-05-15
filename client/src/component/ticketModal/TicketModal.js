@@ -1,8 +1,19 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
-const TicketModal = () => {
-  return <div>TicketModal</div>;
+const modalRoot = document.getElementById("modal");
+
+const TicketModal = (props) => {
+  const element = document.createElement("div");
+
+  useEffect(() => {
+    modalRoot.appendChild(element);
+
+    return () => {
+      modalRoot.removeChild(element);
+    };
+  }, [element]);
+  return createPortal(props.children, element);
 };
 
 export default TicketModal;
