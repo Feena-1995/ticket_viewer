@@ -34,6 +34,15 @@ const CloseButton = styled.button`
     background: #2196f3;
   }
 `;
+const ModalItem = styled.div`
+  margin: 8px 0 8px 0;
+  font-weight: bold;
+`;
+
+const ModalData = styled.div`
+  font-weight: normal;
+  margin-top: 8px;
+`;
 
 const TicketDetails = ({ selectTicket, onClose }) => {
   const {
@@ -55,19 +64,27 @@ const TicketDetails = ({ selectTicket, onClose }) => {
       >
         Close
       </CloseButton>
-      <div data-testid={"detail-id"}>#ID: {id}</div>
-      <div data-testid={"detail-subject"}>Subject: {subject}</div>
-      <div data-testid={"detail-description"}>Description: {description}</div>
-      <div data-testid={"detail-requester_id"}>
-        Requester ID: {requester_id}
-      </div>
-      <div data-testid={"detail-assignee_id"}>Assignee ID: {assignee_id}</div>
-      <div data-testid={"detail-submitter_id"}>
-        Submitter ID: {submitter_id}
-      </div>
-      <div data-testid={"detail-updated_at"}>
-        Updated at: {date.toLocaleString().slice(0, 8)}
-      </div>
+      <ModalItem data-testid={"detail-id"}>
+        Ticket ID: <ModalData>{id}</ModalData>
+      </ModalItem>
+      <ModalItem data-testid={"detail-subject"}>
+        Subject: <ModalData>{subject}</ModalData>
+      </ModalItem>
+      <ModalItem data-testid={"detail-description"}>
+        Description: <ModalData>{description}</ModalData>
+      </ModalItem>
+      <ModalItem data-testid={"detail-requester_id"}>
+        Requester ID: <ModalData>{requester_id}</ModalData>
+      </ModalItem>
+      <ModalItem data-testid={"detail-assignee_id"}>
+        Assignee ID: <ModalData>{assignee_id}</ModalData>
+      </ModalItem>
+      <ModalItem data-testid={"detail-submitter_id"}>
+        Submitter ID: <ModalData>{submitter_id}</ModalData>
+      </ModalItem>
+      <ModalItem data-testid={"detail-updated_at"}>
+        Updated at: <ModalData>{date.toLocaleString().slice(0, 8)}</ModalData>
+      </ModalItem>
     </Container>
   );
 };

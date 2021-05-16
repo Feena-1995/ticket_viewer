@@ -75,13 +75,15 @@ function App() {
         ) : error ? (
           <ErrorPage />
         ) : (
-          <TicketPage
-            tickets={sliceTickets}
-            toggleModal={toggleModal}
-            totalPage={totalPage}
-            page={page}
-            handleChangePage={handleChangePage}
-          />
+          <>
+            <TicketPage
+              tickets={sliceTickets}
+              toggleModal={toggleModal}
+              totalPage={totalPage}
+              page={page}
+              handleChangePage={handleChangePage}
+            />
+          </>
         )}
         {visible ? (
           <TicketModal>
